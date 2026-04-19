@@ -1,40 +1,73 @@
-# Portal Admin API
+# Portal Admin
 
-Bem-vindo ao **Portal Admin API**! Esta é uma API RESTful desenvolvida em **.NET 8** com o objetivo de realizar operações de **CRUD** (Criar, Ler, Atualizar, Deletar) para o gerenciamento de funcionários.
+Sistema de gerenciamento de funcionários com autenticação JWT, desenvolvido com **Angular 19** no frontend e **.NET 8** no backend.
 
-## 🚀 Tecnologias Utilizadas
+## 🚀 Tecnologias
 
-- **.NET 8**
-- **C#**
-- **ASP.NET Core Web API**
-- **Entity Framework Core** (SQL Server)
-- **Swagger / OpenAPI** (Para documentação da API)
+**Backend**
+- .NET 8 / ASP.NET Core Web API
+- Entity Framework Core + SQL Server
+- Autenticação JWT (BCrypt + JwtBearer)
+- Swagger / OpenAPI
 
-## ⚙️ Funcionalidades (Endpoints)
+**Frontend**
+- Angular 19 (Standalone Components)
+- Reactive Forms
+- HttpClient + Interceptor JWT
+- Proxy para desenvolvimento local
 
-A API possui os seguintes endpoints principais para gerenciar os funcionários (`Employee`):
+## 📁 Estrutura do Repositório
+PortalAdmin/
+├── backend/ ← API .NET 8
+└── frontend/ ← App Angular 19
 
-- `GET /api/employess` - Retorna a lista de todos os funcionários.
-- `GET /api/employess/{id}` - Retorna um funcionário específico pelo ID.
-- `POST /api/employess` - Adiciona um novo funcionário.
-- `PUT /api/employess/{id}` - Atualiza os dados de um funcionário existente.
-- `DELETE /api/employess/{id}` - Remove um funcionário do sistema. *(Se você já implementou)*
+## ⚙️ Como Executar
 
-## 🛠️ Como Executar o Projeto
+### Backend
 
-1. Clone o repositório ou baixe o código-fonte.
-2. Certifique-se de ter o **.NET 8 SDK** instalado na sua máquina.
-3. Configure a sua string de conexão (`DefaultConnection`) no arquivo `appsettings.json` para apontar para o seu banco de dados SQL Server local ou em nuvem.
-4. Abra o terminal na raiz do projeto e execute as migrations para criar o banco de dados:
-   ```bash
-   dotnet ef database update
+1. Configure a connection string no `backend/appsettings.json`:
+   ```json
+   "ConnectionStrings": {
+     "DefaultConnection": "sua connection string aqui"
+   }
    ```
-5. Para rodar a aplicação, execute:
-   ```bash
-   dotnet run
+2. Abra `backend/PortalAdmin.slnx` no Visual Studio
+3. No Package Manager Console:
+   ```powershell
+   Update-Database
    ```
-6. Acesse a documentação interativa da API através do navegador (geralmente gerada em `https://localhost:xxxx/swagger`).
+4. Rode o projeto (F5)
+
+> Na primeira execução, um usuário admin é criado automaticamente.
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+ng serve
+```
+
+Acesse `http://localhost:4200`
+
+## 🔐 Acesso
+
+| Campo | Valor |
+|-------|-------|
+| Email | `admin@portal.com` |
+| Senha | `123456` |
+
+## 📡 Endpoints da API
+
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| `POST` | `/api/auth/login` | Autenticação |
+| `GET` | `/api/employess` | Lista funcionários |
+| `GET` | `/api/employess/{id}` | Busca por ID |
+| `POST` | `/api/employess` | Cria funcionário |
+| `PUT` | `/api/employess/{id}` | Atualiza funcionário |
+| `DELETE` | `/api/employess/{id}` | Remove funcionário |
 
 ## 👨‍💻 Autor
 
-- **Lucas Fanti** - [GitHub](https://github.com/LucasRFanti)
+**Lucas Fanti** — [GitHub](https://github.com/LucasRFanti)
