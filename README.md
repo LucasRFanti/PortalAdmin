@@ -17,9 +17,10 @@ Sistema de gerenciamento de funcionários com autenticação JWT, desenvolvido c
 - Proxy para desenvolvimento local
 
 ## 📁 Estrutura do Repositório
-PortalAdmin/
-├── backend/ ← API .NET 8
-└── frontend/ ← App Angular 19
+
+    PortalAdmin/
+    ├── backend/     ← API .NET 8
+    └── frontend/    ← App Angular 19
 
 ## ⚙️ Como Executar
 
